@@ -1,0 +1,69 @@
+{% extends "home/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block selected1 %}mdc-list-item--selected{% endblock %}
+{% block content %}
+<main class="mdc-drawer-app-content main-content">
+  <div class="alert alert-success" id="div1" style="display: none;" role="alert">
+Successfully  connected the device</div>
+
+<div class="alert alert-danger" role="alert" id="div2" style="display: none;">
+Device either offline or DoesNotExist</div>
+   <div class="demo-image">
+<img src="https://img.icons8.com/ios-filled/96/000000/centralized-network.png">    </div>
+  <h1>Connect</h1>
+<form action="/savedata/" method="post" id="connectform">{% csrf_token %}
+  <div class="mdc-form-field">
+
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+<input id="name" name="name" class="form-control"  required>  </div> 
+
+</div>
+<div class="form-group">
+    <label for="exampleFormControlInput2">IP Address</label>
+ <input id="ipaddress" name="ipaddress" class="form-control"  required type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" placeholder="xxx.xxx.xxx.xxx">  </div> 
+<button  class="btn btn-lg btn-primary" type="submit">Connect</button>
+<button class="btn btn-secondary btn-lg" type="reset">Cancel</button>
+  </div>
+
+
+<div class="form-group">
+
+
+</div>
+
+</form>
+
+  </main>
+
+{% endblock %}
+{%block footer%}
+<script>
+
+$(document).ready(function() {
+    $("#connectform").submit(function(event) {
+       event.preventDefault();
+       $.ajax({ data: $(this).serialize(), 
+                type: $(this).attr('method'), 
+                url: $(this).attr('action'), 
+                success: function(response) {
+                     console.log(response);
+                     if(response['success']) {
+                       $("#div1").fadeIn();
+                               $("#connectform").trigger("reset");
+
+                     } 
+                     if(response['error']) {
+                         $("#div2").html(
+                         response['error']['comment'] );
+                                                $("#div2").fadeIn("slow");
+
+                     } 
+                },
+                error: function (request, status, error) {
+                     console.log(request.responseText);
+                }
+       });
+   });
+})
+</script>{% endblock %}

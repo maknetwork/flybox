@@ -1,0 +1,151 @@
+{% extends "home/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block selected3 %}mdc-list-item--selected{% endblock %}
+{% block content %}
+{% load static %}
+
+<style >.weekDays-selector input {
+  display: none!important;
+}
+
+.weekDays-selector input[type=checkbox] + label {
+  display: inline-block;
+  border-radius: 20px;
+  background: #dddddd;
+  height: 40px;
+  width: 80px;
+  margin-right: 3px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.weekDays-selector input[type=checkbox]:checked + label {
+  background: #2AD705;
+  color: #ffffff;
+}</style>
+<main class="mdc-drawer-app-content main-content">
+{% load tz %}
+{% get_current_timezone as TIME_ZONE %}
+
+  <h1>Set Control Values </h1>
+<form action="update_control/" method="post">{% csrf_token %}
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">Timezone</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="timezone">
+      {% for tz in timezones %}
+        <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
+        {% endfor %}
+    </select>
+  </div>
+<div class="form-group">
+
+
+<div class="mdc-select">
+  <div class="mdc-select__anchor demo-width-class">
+    <i class="mdc-select__dropdown-icon"></i>
+    <div class="mdc-select__selected-text"></div>
+    <span class="mdc-floating-label">Pick a Fly-box</span>
+    <span class="mdc-line-ripple"></span>
+  </div>
+
+  <div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
+    <ul class="mdc-list">
+      <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+            {% for post in posts %}
+
+      <li class="mdc-list-item" data-value="{{post.pk}}" name="name">
+
+        <span class="mdc-list-item__text">
+        
+{{post.title}}        </span>
+      </li>
+      {%endfor%}
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+ <input type="hidden" id="custId" name="flybox" value="">
+
+ <div class="form-group">
+      <label for="exampleFormControlInput1">Cleaning Door</label>
+
+<div class="weekDays-selector">
+  <input type="checkbox" id="weekday-mon" name="cddays[]" value="1" class="weekday" />
+  <label for="weekday-mon" class="shadow" >M</label>
+  <input type="checkbox" id="weekday-tue" name="cddays[]" value="2" class="weekday" />
+  <label for="weekday-tue" class="shadow">T</label>
+  <input type="checkbox" id="weekday-wed" name="cddays[]" value="3" class="weekday" />
+  <label for="weekday-wed" class="shadow">W</label>
+  <input type="checkbox" id="weekday-thu" name="cddays[]" value="4" class="weekday" />
+  <label for="weekday-thu" class="shadow">T</label>
+  <input type="checkbox" id="weekday-fri" name="cddays[]" value="5" class="weekday" />
+  <label for="weekday-fri" class="shadow">F</label>
+  <input type="checkbox" id="weekday-sat" name="cddays[]" value="6" class="weekday" />
+  <label for="weekday-sat" class="shadow">S</label>
+  <input type="checkbox" id="weekday-sun" name="cddays[]" value="7" class="weekday" />
+  <label for="weekday-sun" class="shadow">S</label>
+</div>
+  <label for="timecd">Time</label>
+<input id="timecd" name="timecd" class="form-control" type="time"> 
+
+</div><div class="form-group">
+
+  <button  class="btn btn-lg btn-primary" id="save" type="submit">Save</button>
+<button class="btn btn-secondary btn-lg" type="reset">Cancel</button>
+
+</div>
+</form> <form action="update_controlpd/" method="post">{% csrf_token %}
+
+<div class="form-group">
+
+      <label for="exampleFormControlInput1">Pupae Door</label>
+<div class="form-group">
+
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="flyboxselect">
+             {% for post in posts %}
+     <option>{{post.title}}        </option>      {%endfor%}
+
+     
+    </select>
+  
+</div>
+<div class="weekDays-selector">
+  <input type="checkbox" id="weekday-monp" name="pddays[]" value="1"class="weekday" />
+  <label for="weekday-monp">Monday</label>
+  <input type="checkbox" id="weekday-tuep" name="pddays[]" value="2" class="weekday" />
+  <label for="weekday-tuep">T</label>
+  <input type="checkbox" id="weekday-wedp" name="pddays[]" value="3" class="weekday" />
+  <label for="weekday-wedp">W</label>
+  <input type="checkbox" id="weekday-thup" name="pddays[]" value="4" class="weekday" />
+  <label for="weekday-thup">T</label>
+  <input type="checkbox" id="weekday-frip" name="pddays[]" value="5" class="weekday" />
+  <label for="weekday-frip">F</label>
+  <input type="checkbox" id="weekday-satp" name="pddays[]" value="6"class="weekday" />
+  <label for="weekday-sat">S</label>
+  <input type="checkbox" id="weekday-sunp" name="pddays[]" value="7" class="weekday" />
+  <label for="weekday-sunp">S</label>
+</div>
+  <label for="timepd">Time</label>
+
+<input id="timepd" name="timepd" class="form-control" type="time"> 
+
+</div>      <div class="form-group">
+
+  <button  class="btn btn-lg btn-primary" id="save" type="submit">Save</button>
+<button class="btn btn-secondary btn-lg" type="reset">Cancel</button>
+ <input type="hidden" id="custId" name="flybox" value="">
+
+</div>
+</form> 
+
+
+  </main>
+
+{% endblock %}
+{%block footer%} 
+  
+{%endblock%}

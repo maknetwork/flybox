@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="%PUBLIC_URL%">
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+  <meta name="theme-color" content="#000000">
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+  <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,900|Material+Icons">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        rel='stylesheet' type='text/css'>
+                    <link rel="stylesheet" href="{% static "css/mdDateTimePicker.css" %}">
+              
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <style>
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+</style>
+<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="mdc-typography" data-gr-c-s-loaded="true"><noscript>You need to enable JavaScript to run this app.</noscript><header class="mdc-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <button class="mdc-top-app-bar__navigation-icon mdc-icon-button material-icons" href="">menu</button>
+      <a class="mdc-top-app-bar__title" href="/" style="color: inherit;">Fly-box</a>
+    </section>
+  </div>
+</header>
+
+<div class="app-drawer-layout mdc-top-app-bar--fixed-adjust">
+  <!-- Drawer -->
+  <aside class="mdc-drawer mdc-drawer--dismissible demo-drawer">
+    <nav class="mdc-drawer__drawer">
+      <nav class="mdc-drawer__content">
+        <div id="icon-with-text-demo" class="mdc-list">
+          <a class="mdc-list-item {%block selected%}{%endblock%} demo-drawer-list-item" href="/">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">dashboard</i>Fly-Box cockpit
+          </a>
+         
+        </div>
+
+        <hr class="mdc-list-divider">
+      <h6 class="mdc-list-group__subheader">Fly-box Settings</h6>
+
+        <div class="mdc-list">
+          <a class="mdc-list-item {%block selected1%}{%endblock%} demo-drawer-list-item" href="/connect">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">add_circle</i>Connect to fly-box
+          </a>
+          <a class="mdc-list-item {%block selected2%}{%endblock%} demo-drawer-list-item" href="/disconnect">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">remove_circle</i>Disconnect from fly-box
+          </a>
+          <a class="mdc-list-item {%block selected3%}{%endblock%} demo-drawer-list-item" href="/edit_control">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">report</i>Set automation period
+          </a>
+         
+        </div>
+      </nav>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+{% block content %}
+{% endblock %}
+  
+</div>
+
+ <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script>
+    // Instantiate MDC Drawer
+const drawerEl = document.querySelector('.mdc-drawer');
+const drawer = new mdc.drawer.MDCDrawer.attachTo(drawerEl);
+
+// Instantiate MDC Top App Bar (required)
+const topAppBarEl = document.querySelector('.mdc-top-app-bar');
+const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarEl);
+
+topAppBar.setScrollTarget(document.querySelector('.main-content'));
+topAppBar.listen('MDCTopAppBar:nav', () => {
+  drawer.open = !drawer.open;
+});
+  drawer.open = !drawer.open;
+</script>
+<script >
+const selectEl = document.querySelector('.mdc-select');
+const select = new mdc.select.MDCSelect.attachTo(selectEl);
+
+
+select.listen('MDCSelect:change', () => {
+document.getElementById("custId").value =`${select.value}`;
+
+});
+const tfel= document.querySelector('.mdc-text-field');
+const tf = new mdc.textField.MDCTextField.attachTo(selectEl);
+
+const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{%block footer%} {%endblock%}
+</body>
+
+
+</html>

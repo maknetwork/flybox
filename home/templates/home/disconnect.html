@@ -1,0 +1,113 @@
+{% extends "home/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block selected2 %}mdc-list-item--selected{% endblock %}
+{% block content %}
+<main class="mdc-drawer-app-content main-content">
+  <div class="alert alert-success" id="div1" style="display: none;" role="alert">
+Disonnected the Fly-box</div>
+
+<div class="alert alert-danger" role="alert" id="div2" style="display: none;">
+Something went wrong !</div>
+ <div class="demo-image">
+    <img src="https://img.icons8.com/material/96/000000/disconnected.png">
+    </div>
+
+  <h1>Disconnect from fly-box</h1>
+<form action="/disconnect_flybox/" id="disconnectform" method="post">{% csrf_token %}
+   <div class="mdc-form-field">
+    <div class="form-group">
+
+<div class="mdc-select">
+  <div class="mdc-select__anchor demo-width-class">
+    <i class="mdc-select__dropdown-icon"></i>
+    <div class="mdc-select__selected-text"></div>
+    <span class="mdc-floating-label">Pick a Fly-box</span>
+    <span class="mdc-line-ripple"></span>
+  </div>
+
+  <div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
+    <ul class="mdc-list">
+      <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+            {% for post in posts %}
+
+      <li class="mdc-list-item" data-value="{{post.pk}}" name="name">
+
+        <span class="mdc-list-item__text">
+        
+{{post.title}}        </span>
+      </li>
+      {%endfor%}
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+</div>
+      <div class="form-group">
+
+  <button  class="btn btn-lg btn-primary" id="delete" type="button" data-toggle="modal" data-target="#exampleModalCenter">Disconnect</button>
+<button class="btn btn-secondary btn-lg" type="reset">Cancel</button>
+
+</div>
+ <input type="hidden" id="custId" name="custId" value="">
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Attention!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+Do you really want to disconnect ?      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button class="btn btn-danger" type="submit">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form> 
+
+
+  </main>
+
+{% endblock %}
+{%block footer%}
+<script>
+
+$(document).ready(function() {
+    $("#disconnectform").submit(function(event) {
+       event.preventDefault();
+       $.ajax({ data: $(this).serialize(), 
+                type: $(this).attr('method'), 
+                url: $(this).attr('action'), 
+                success: function(response) {
+                     console.log(response);
+                     if(response['success']) {
+                       $("#div1").fadeIn();
+
+                               $("#disconnectform").trigger("reset").delay( 800 );
+                                                        $("#div1").fadeOut(3000);
+
+
+                     } 
+                     if(response['error']) {
+                         $("#div2").html(
+                         response['error']['comment'] );
+                                                $("#div2").fadeIn("slow");
+                                                                                                        $("#div1").fadeOut(3000);
+
+
+                     } 
+                },
+                error: function (request, status, error) {
+                     console.log(request.responseText);
+                }
+       });
+   });
+})
+</script>{% endblock %}
