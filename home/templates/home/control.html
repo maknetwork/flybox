@@ -57,11 +57,11 @@
       <li class="mdc-list-item" data-value="{{post.pk}}" name="name">
 
         <span class="mdc-list-item__text">
-        
+
 {{post.title}}        </span>
       </li>
       {%endfor%}
-      
+
     </ul>
   </div>
 </div>
@@ -89,7 +89,7 @@
   <label for="weekday-sun" class="shadow">S</label>
 </div>
   <label for="timecd">Time</label>
-<input id="timecd" name="timecd" class="form-control" type="time"> 
+<input id="timecd" name="timecd" class="form-control" type="time">
 
 </div><div class="form-group">
 
@@ -109,9 +109,9 @@
              {% for post in posts %}
      <option>{{post.title}}        </option>      {%endfor%}
 
-     
+
     </select>
-  
+
 </div>
 <div class="weekDays-selector">
   <input type="checkbox" id="weekday-monp" name="pddays[]" value="1"class="weekday" />
@@ -126,12 +126,12 @@
   <label for="weekday-frip">F</label>
   <input type="checkbox" id="weekday-satp" name="pddays[]" value="6"class="weekday" />
   <label for="weekday-sat">S</label>
-  <input type="checkbox" id="weekday-sunp" name="pddays[]" value="7" class="weekday" />
+  <input type="checkbox" id="weekday-sunp" name="pddays[]" value="0" class="weekday" />
   <label for="weekday-sunp">S</label>
 </div>
   <label for="timepd">Time</label>
 
-<input id="timepd" name="timepd" class="form-control" type="time"> 
+<input id="timepd" name="timepd" class="form-control" type="time">
 
 </div>      <div class="form-group">
 
@@ -140,12 +140,12 @@
  <input type="hidden" id="custId" name="flybox" value="">
 
 </div>
-</form> 
+</form>
 
 
   </main>
 
 {% endblock %}
-{%block footer%} 
-  
+{%block footer%}
+
 {%endblock%}

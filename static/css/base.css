@@ -10,6 +10,9 @@ body {
           flex-direction: column;
   min-height: 100%;
   margin: 0;
+  font-family: 'Lora', serif;
+  background-color: #FEF9EA;
+
 }
 
 .demo-body {
