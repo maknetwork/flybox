@@ -30,14 +30,7 @@
 
   <h1>Set Control Values </h1>
 <form action="update_control/" method="post">{% csrf_token %}
-    <div class="form-group">
-    <label for="exampleFormControlSelect1">Timezone</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="timezone">
-      {% for tz in timezones %}
-        <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
-        {% endfor %}
-    </select>
-  </div>
+
 <div class="form-group">
 
 
