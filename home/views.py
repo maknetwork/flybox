@@ -11,6 +11,7 @@ import pytz
 from django.http import HttpResponse, JsonResponse
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
 from crontab import CronTab
+import os
 
 
 cron = CronTab(user='arif')# change the user name
@@ -113,7 +114,7 @@ def updatecontrol(request):
 
             schedule, _ = CrontabSchedule.objects.get_or_create(minute=cdtimelist[1],hour=cdtimelist[0],day_of_week=my_string,day_of_month='*', month_of_year='*')
             PeriodicTask.objects.create(crontab=schedule, name=(cronname+"cd"), task=('flybox.celery.cd' + str(cronnameid) +'()'), enabled=False)
-            job = cron.new(command= 'curl '+ cronnamer.ipaddress +"/5/on", comment=(cronnamer.title+"cd"))
+            job = cron.new(command= 'curl '+ cronnamer.ipaddress +"/cd/start", comment=(cronnamer.title+"cd"))
             job.minute.every(str(int(cdtimelist[1])))
             job.hour.every(str(int(cdtimelist[0])))
             job.dow.on(*cddays)
@@ -152,7 +153,7 @@ def updatecontrolpd(request):
 
             schedule, _ = CrontabSchedule.objects.get_or_create(minute=pdtimelist[1],hour=pdtimelist[0],day_of_week=my_string,day_of_month='*', month_of_year='*')
             PeriodicTask.objects.create(crontab=schedule, name=(cronname+"pd"), task=('flybox.celery.pd' + str(cronnameid) +'()'), enabled=False)
-            job = cron.new(command='curl '+ cronnamer.ipaddress +"/5/on", comment=(cronnamer.title+"pd"))
+            job = cron.new(command='curl '+ cronnamer.ipaddress +"/pd/start", comment=(cronnamer.title+"pd"))
             job.minute.every(str(int(pdtimelist[1])))
             job.hour.every(str(int(pdtimelist[0])))
             job.dow.on(*pddays)
@@ -223,6 +224,17 @@ def startautomation(request):
         for item1 in findjob:
             print(item1)
             item1.enable(False)
+    elif buttonpressed=="startetd1":
+        cmd= 'curl '+ cronnamer.ipaddress +'/etd1/start'
+        os.system(cmd)
+
+    elif buttonpressed=="startetd2":
+        cmd= 'curl '+ cronnamer.ipaddress +'/etd2/start'
+        os.system(cmd)
+    elif buttonpressed=="startetd3":
+        cmd= 'curl '+ cronnamer.ipaddress +'/etd3/start'
+        os.system(cmd)
+
 
 
 

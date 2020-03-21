@@ -1,5 +1,5 @@
 {% extends "home/base.html" %}
-{% block title %}My Blog{% endblock %}
+{% block title %}Fly-box Dashboard{% endblock %}
 {% block selected1 %}mdc-list-item--selected{% endblock %}
 {% block content %}
 <main class="mdc-drawer-app-content main-content">
@@ -16,12 +16,12 @@ Device either offline or DoesNotExist</div>
 
     <div class="form-group">
     <label for="exampleFormControlInput1">Name</label>
-<input id="name" name="name" class="form-control"  required>  </div> 
+<input id="name" name="name" class="form-control"  required>  </div>
 
 </div>
 <div class="form-group">
     <label for="exampleFormControlInput2">IP Address</label>
- <input id="ipaddress" name="ipaddress" class="form-control"  required type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" placeholder="xxx.xxx.xxx.xxx">  </div> 
+ <input id="ipaddress" name="ipaddress" class="form-control"  required type="text" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" placeholder="xxx.xxx.xxx.xxx">  </div>
 <button  class="btn btn-lg btn-primary" type="submit">Connect</button>
 <button class="btn btn-secondary btn-lg" type="reset">Cancel</button>
   </div>
@@ -43,22 +43,22 @@ Device either offline or DoesNotExist</div>
 $(document).ready(function() {
     $("#connectform").submit(function(event) {
        event.preventDefault();
-       $.ajax({ data: $(this).serialize(), 
-                type: $(this).attr('method'), 
-                url: $(this).attr('action'), 
+       $.ajax({ data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
                 success: function(response) {
                      console.log(response);
                      if(response['success']) {
                        $("#div1").fadeIn();
                                $("#connectform").trigger("reset");
 
-                     } 
+                     }
                      if(response['error']) {
                          $("#div2").html(
                          response['error']['comment'] );
                                                 $("#div2").fadeIn("slow");
 
-                     } 
+                     }
                 },
                 error: function (request, status, error) {
                      console.log(request.responseText);

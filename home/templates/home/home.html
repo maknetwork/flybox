@@ -1,5 +1,5 @@
 {% extends "home/base.html" %}
-{% block title %}My Blog{% endblock %}
+{% block title %}Fly-box Dashboard{% endblock %}
 {% block selected %}mdc-list-item--selected{% endblock %}
 {% block content %}
 <main class="mdc-drawer-app-content main-content">
@@ -67,20 +67,14 @@
         {% endif %}
         <td class="mdc-data-table__cell"><button class="mdc-button mdc-button--raised start" style="
     background-color: green;
-" onclick="myFunction5{{post.id}}{{post.id}}()">  <span class="mdc-button__ripple"></span> Start</button> <button class="mdc-button mdc-button--raised" style="
-    background-color: red;
-" onclick="myFunction6{{post.id}}()">  <span class="mdc-button__ripple"></span> Stop</button></td>
+" onclick="window.location.href = '/startautomation/?dept_id={{post.id}}&user_name=startetd1';" type="button" >  <span class="mdc-button__ripple"></span> Start</button></td>
 
 <td class="mdc-data-table__cell"><button class="mdc-button mdc-button--raised start" style="
     background-color: green;
-" onclick="myFunction7{{post.id}}()">  <span class="mdc-button__ripple"></span> Start</button> <button class="mdc-button mdc-button--raised" style="
-    background-color: red;
-"  onclick="myFunction8{{post.id}}()">  <span class="mdc-button__ripple"></span> Stop</button></td>
+" onclick="window.location.href = '/startautomation/?dept_id={{post.id}}&user_name=startetd2';" type="button" >  <span class="mdc-button__ripple"></span> Start</button></td>
 <td class="mdc-data-table__cell"><button class="mdc-button mdc-button--raised start" style="
     background-color: green;
-" onclick="myFunction9()">  <span class="mdc-button__ripple"></span> Start</button> <button class="mdc-button mdc-button--raised" style="
-    background-color: red;
-" onclick="myFunction10{{post.id}}()">  <span class="mdc-button__ripple"></span> Stop</button></td>
+" onclick="window.location.href = '/startautomation/?dept_id={{post.id}}&user_name=startetd3';" type="button" >  <span class="mdc-button__ripple"></span> Start</button> </td>
       </tr>
  <input type="hidden" id="custId" name="custId" value="{{post.title}}">
   <input type="hidden" id="buttonpressed" name="{{post.title}}buttonpressed" value="">
