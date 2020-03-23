@@ -26,7 +26,7 @@
   <a href="https://maclelabs.com">
 <img src="https://img.icons8.com/color/96/000000/fly.png"/>  </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Fly farming Automation (IoT)</h3>
 
   <p align="center">
 A fly farming automation solution using Internet of things       <br />
@@ -108,14 +108,13 @@ https://github.com/maknetwork/flybox.git
 ```sh
 cd flybox
 ```
-4. Type 
+4. In a terminal type 
 ```sh
 pip3 install -r requirements.txt
 ```
-5.  
+5. Now run it using 
 ```sh
-pip3 install -r requirements.txt
-```
+python manage.py runserver```
 
 
 
@@ -157,9 +156,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
+Macle Labs- [@your_twitter](https://maclelabs.com) - admin@maclelabs.com
+Fiverr Link: [https://www.fiverr.com/share/995X8E](https://www.fiverr.com/share/995X8E)
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/maknetwork/flybox](https://github.com/maknetwork/flybox)
 
 
