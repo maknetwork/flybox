@@ -123,7 +123,7 @@ pip3 install -r requirements.txt
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-    <img src="Schematics/Fly-farmer_bb2.jpg" alt="Logo" width="auto" height="auto">
+<img src="Schematics/Fly-farmer_bb2.jpg" alt="Logo" width="auto" height="auto">
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
