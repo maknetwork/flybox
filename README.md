@@ -1,10 +1,10 @@
 <!--
-*** Thanks for checking out this README Template. If you have a suggestion that would
+***
+ Thanks for checking out this README Template. If you have a suggestion that would
 *** make this better, please fork the repo and create a pull request or simply open
 *** an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
 -->
-
 
 
 
@@ -17,12 +17,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -36,16 +30,11 @@
   <h3 align="center">Best-README-Template</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+A fly farming automation solution using Internet of things       <br />
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/maknetwork/flybox/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/maknetwork/flybox/issues">Request Feature</a>
   </p>
 </p>
 
@@ -71,16 +60,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+Originally built for a fly farmer. This helps you to automate fly farming and also monitor and schedule tasks using a web interface. 
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Here's are some advantages:
+* Your time should be focused on creating something amazing and not on openining and closing doors on a flybox.
+* You shouldn't be doing the same tasks over and over.
+* Fly farming can lead to diseases.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
@@ -88,7 +75,11 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [Django](https://djangoproject.com)
+* [Material design](https://material.io)
+* [Arduino](https://arduino.cc)
+* [Python](https://python.org)
+
 
 
 
@@ -101,25 +92,30 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* curl
+* Django 
+* Python3 
+* pip3
+* virtual env
+* Postgresql
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+https://github.com/maknetwork/flybox.git
 ```
-3. Install NPM packages
+3. Change into repo directory
 ```sh
-npm install
+cd flybox
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
+4. Type 
+```sh
+pip3 install -r requirements.txt
+```
+5.  
+```sh
+pip3 install -r requirements.txt
 ```
 
 
