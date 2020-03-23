@@ -126,7 +126,7 @@ python manage.py runserver
 <img src="Schematics/Fly-farmer_bb2.jpg" alt="Logo" width="auto" height="auto">
 
 ### Hardware-list 
-<a href="https://docs.google.com/document/d/1TGvZiCvP8Vcc7f5WyChDOv1FPJFWQLIn9MqLHuS667w/edit?usp=sharing"> Hardware list Spreadsheet</a>
+<a href="https://docs.google.com/document/d/1TGvZiCvP8Vcc7f5WyChDOv1FPJFWQLIn9MqLHuS667w/edit?usp=sharing" target="_blank"> Hardware list Spreadsheet</a>
 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
