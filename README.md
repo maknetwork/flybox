@@ -114,14 +114,16 @@ pip3 install -r requirements.txt
 ```
 5. Now run it using 
 ```sh
-python manage.py runserver```
+python manage.py runserver
+```
 
 
 
-<!-- USAGE EXAMPLES -->
+<!-- Arduino Schematics -->
 ## Usage
-
+</br>
 <img src="Schematics/Fly-farmer_bb2.jpg" alt="Logo" width="auto" height="auto">
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
