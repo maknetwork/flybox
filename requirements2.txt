@@ -5,7 +5,7 @@ billiard==3.6.3.0
 celery==4.4.1
 certifi==2019.11.28
 chardet==3.0.4
-Django==3.0.4
+Django==3.0.14
 django-celery-beat==2.0.0
 django-timezone-field==4.0
 html5lib==1.0.1
